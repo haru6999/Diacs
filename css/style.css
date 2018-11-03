@@ -1,0 +1,86 @@
+*{
+  margin: 0 auto;
+}
+
+
+/* カレンダーナビのスタイル */
+#calendar-nav {
+    text-align: center;
+}
+
+#calendar-nav span {
+    display: inline-block;
+    width: 200px;
+}
+
+#calendar-nav i{
+  width:10px;
+}
+
+#calendar-nav i:hover {
+    cursor: pointer;
+    width:10px;
+}
+
+/* カレンダーのスタイル */
+.table{
+  width:100%;
+  height:1000px;
+}
+.table th, td{
+    text-align: center;
+}
+.glyphicon{
+  width:10px;
+}
+
+
+#calendar th:first-child {
+    background-color: #FEEEFF;
+}
+#calendar td:first-child {
+    background-color: #FEEEFF;
+}
+#calendar th:nth-child(7) {
+    background-color: #DFFFFF
+}
+#calendar td:nth-child(7) {
+    background-color: #DFFFFF
+}
+
+#calendar td:hover {
+    opacity: 0.6;
+}
+
+#calendar td:visited {
+    opacity: 0.6;
+    background-color: blue;
+}
+
+
+/*post.html*/
+.main{
+  position: absolute;
+  top:250px;
+  width: 100%;
+}
+
+h2{
+  width: 100%;
+  text-align: center;
+}
+
+textarea{
+  width: 60%;
+  height: 200px;
+  margin-left: 20%;
+  margin-top: 50px;
+  box-sizing:border-box;
+  border-color: black;
+}
+
+input{
+  width: 100%;
+  margin-top: 50px;
+  text-align: center;
+}

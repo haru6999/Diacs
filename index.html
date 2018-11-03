@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meata charset="utf-8">
+  <title>たか</title>
+  <link href="css/style.css" rel="stylesheet">
+  <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+</head>
+<body>
+  <div id="app">
+      <div id="calendar-nav">
+          <!-- <i class="glyphicon glyphicon-menu-left" v-on="click: moveLastMonth"></i> -->
+          <i class="fas fa-chevron-left" v-on="click: moveLastMonth"></i>
+          <span>{{calData.year}} - {{getMonthName(calData.month)}}</span>
+          <!-- <i class="glyphicon glyphicon-menu-right"  v-on="click: moveNextMonth"></i> -->
+          <i class="fas fa-chevron-right"  v-on="click: moveNextMonth"></i>
+      </div>
+      <table id="calendar" class="table table-bordered" v-repeat="t : events">
+          <thead>
+              <tr>
+                  <th v-repeat="week: weeks">{{week}}</th>
+              </tr>
+          </thead>
+          <tbody>
+              <tr v-repeat="week: calendar">
+                  <td v-repeat="day: week">{{day.day}}</td>
+              </tr>
+          </tbody>
+      </table>
+      <i class="far fa-comment fa-3x"></i>
+  </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/0.12.8/vue.min.js"></script>
+  <script src="js/calender.js"></script>
+</body>
+</html>
