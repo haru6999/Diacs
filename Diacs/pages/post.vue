@@ -19,12 +19,16 @@ export default {
       let params = new URLSearchParams();
       params.append('article', this.message);
       params.append('username', 'taka');
+      params.append('year', '2018');
+      params.append('month', '11');
+      params.append('day', '3');
 
       let { data } = await axios.post('http://ec2-18-191-90-196.us-east-2.compute.amazonaws.com:8080/getSentiment',params);
       console.log(data)
       console.log(this)
       this.$router.push("completion")
       console.log(this.message)
+      console.log(data.UserName)
     }
   }
 }

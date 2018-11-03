@@ -1,5 +1,6 @@
 <template>
   <a href="calender">calenderへ飛ぶ</a>
+
 </template>
 
 <script>
@@ -7,15 +8,14 @@ import axios from 'axios'
 
 export default {
   created:async function () { //読み込まれた時 asyncの下でしかawaitは使えないよ
-    let { data } = await axios.get('http://ec2-18-191-90-196.us-east-2.compute.amazonaws.com:8080/getSentiment', {
+    let { data } = await axios.get('http://ec2-18-191-90-196.us-east-2.compute.amazonaws.com:8080/lastState', {
     });
-    console.log(data),
-    console.log(data.UserName),
-    console.log(data.Article),
-    console.log(data.Emotion),
-    console.log(data.EmotionNum),
-    console.log(data.ColorCode)
+    console.log("completion!!")
+    console.log(data)
+    console.log(data.UserName)
+    console.log((data.ColorCode).toString(16))
   }
+
 }
 </script>
 

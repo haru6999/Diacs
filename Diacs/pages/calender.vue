@@ -13,7 +13,11 @@
           </thead>
           <tbody>
               <tr v-for="week in calendar">
-                  <td v-for="day in week">{{day.day}}</td>
+                  <td v-for="day in week">
+                    <div class={{}}>
+                      {{day.day}}
+                    </div>
+                  </td>
               </tr>
           </tbody>
       </table>
@@ -175,9 +179,9 @@ span{
 #calendar th:first-child {
     color: #C46D6D;
 }
-#calendar td:first-child {
-    /*color: #C46D6D;*/
-}
+/*#calendar {
+  background-color: blue;
+}*/
 #calendar th:nth-child(7) {
     color: #5888B7;
 }
@@ -193,5 +197,8 @@ span{
     opacity: 0.6;
     background-color: blue;
 }
+
+/*色付け*/
+
 
 </style>
