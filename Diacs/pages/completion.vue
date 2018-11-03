@@ -1,13 +1,22 @@
 <template>
   <div>
     <a href="calender">calenderへ飛ぶ</a>
+    {{ username }}
+    <div class="color">
+      background-color:{{color}};
+      $color={{color}};
+    </div>
+    <script>
+      var changeColor = function(){
+        // search-result-num のクラス名を持つ要素を取得
+        var resultNum = document.querySelector('.color');
 
-    <ul id="v-for-datas">
-      <li v-for="(data, key) in datas">
-        {{ key }}: {{ data }}
-      </li>
-    </ul>
-
+        // 色変更
+        resultNum.style.backgroundColor = '{{color}}';
+      }
+      // 実行
+      changeColor();
+    </script>
   </div>
 </template>
 
@@ -15,19 +24,20 @@
 import axios from 'axios'
 
 export default {
-  asyncData ({ params }, callback) {
-    axios.get('http://ec2-18-191-90-196.us-east-2.compute.amazonaws.com:8080/lastState')
-    .then((res) => {
-      callback(null, {
-        datas: res.data
-
-      })
-    })
+  async asyncData(){
+    let { data } = await axios.get('http://ec2-18-191-90-196.us-east-2.compute.amazonaws.com:8080/lastState')
+    return {username : data.UserName,
+      color : "#"+(data.ColorCode).toString(16)
+    }
   }
 }
+
+
 </script>
 
 <style>
+
+
 
 .container {
   min-height: 100vh;
@@ -58,4 +68,10 @@ export default {
 .links {
   padding-top: 15px;
 }
+
+.color{
+  width: 100%;
+  height: 100vh;
+}
+
 </style>
