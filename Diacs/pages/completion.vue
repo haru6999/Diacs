@@ -1,21 +1,29 @@
 <template>
-  <a href="calender">calenderへ飛ぶ</a>
+  <div>
+    <a href="calender">calenderへ飛ぶ</a>
 
+    <ul id="v-for-datas">
+      <li v-for="(data, key) in datas">
+        {{ key }}: {{ data }}
+      </li>
+    </ul>
+
+  </div>
 </template>
 
 <script>
 import axios from 'axios'
 
 export default {
-  created:async function () { //読み込まれた時 asyncの下でしかawaitは使えないよ
-    let { data } = await axios.get('http://ec2-18-191-90-196.us-east-2.compute.amazonaws.com:8080/lastState', {
-    });
-    console.log("completion!!")
-    console.log(data)
-    console.log(data.UserName)
-    console.log((data.ColorCode).toString(16))
-  }
+  asyncData ({ params }, callback) {
+    axios.get('http://ec2-18-191-90-196.us-east-2.compute.amazonaws.com:8080/lastState')
+    .then((res) => {
+      callback(null, {
+        datas: res.data
 
+      })
+    })
+  }
 }
 </script>
 
