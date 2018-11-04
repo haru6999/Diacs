@@ -13,16 +13,9 @@
           </thead>
           <tbody>
               <tr v-for="week in calendar">
-                  <td v-for="day in week" class="bg">
+                  <td v-for="day in week" class="bg" v-bind:style="{backgroundColor:day.color}">
                     <div>
                       {{day.day}}
-                      <script>
-                        var bgColor = function(){
-                          var color = document.querySelector('.table td');
-                          color.style.backgroundColor = 'blue';
-                        }
-                        bgColor();
-                      </script>
                     </div>
                   </td>
               </tr>
@@ -128,6 +121,7 @@ export default {
                         for(var i=0;i<this.items.data.length;i++){
                           if(dayIdx == this.items.data[i].Day){
                             week[d].color = "#"+(this.items.data[i].ColorCode).toString(16)
+                            week[d].num = this.items.data.length
                           }
                         }
                         dayIdx++;
