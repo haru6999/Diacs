@@ -1,9 +1,9 @@
-<template>
-  <div>
+<template class="submited__container">
+  <div class="submited__container--popup">
     <h1>送信できたよ！</h1>
     <h2>今回の日記カラーは</h2>
     <div class="circle"></div>
-   <a href="calender">calenderへ飛ぶ</a>
+    <a href="calender" class="submited__btn--back">カレンダーへ戻る</a>
     <script>
       var changeColor = function(){
         // search-result-num のクラス名を持つ要素を取得
@@ -15,7 +15,7 @@
       // 実行
       changeColor();
     </script>
- 
+
   </div>
 </template>
 
@@ -36,7 +36,35 @@ export default {
 
 <style>
 
+.submited__container {
+  /*背景の画像とかよしなに入れて欲しい！*/
+  /*background-image: url();*/
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
+.submited__container--popup {
+  color: #333;
+  width: 90%;
+  margin: 3rem auto;
+  padding: 2rem 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: #fefefe;
+  border-radius: 1.5rem;
+  box-shadow: 0rem 0rem 0.5rem #aaa;
+}
+
+.submited__container--popup h1 {
+  font-weight: normal;
+}
+
+.submited__container--popup h2 {
+  font-weight: normal;
+}
 
 .container {
   min-height: 100vh;
@@ -77,6 +105,18 @@ export default {
   width: 80px;
   height: 80px;
   border-radius: 50%;
+  box-shadow: 0rem 0rem 0.5rem #aaa;
+  margin: 1.5rem 0;
+}
+
+.submited__btn--back {
+  font-size: 1.25rem;
+  color: #333;
+  text-decoration: none;
+}
+
+.submited__btn--back:hover {
+  background-color: #707070;
 }
 
 </style>
