@@ -14,8 +14,9 @@
           <tbody>
               <tr v-for="week in calendar">
                   <td v-for="day in week" class="bg" v-bind:style="{backgroundColor:day.color}">
-                    <div>
+                    <div v-on:click="click(day)">
                       {{day.day}}
+
                     </div>
                   </td>
               </tr>
@@ -47,6 +48,7 @@ export default {
     color: [],
     month:[],
     day:[],
+
   },
   mounted() {
   },
@@ -65,8 +67,11 @@ export default {
         this.items = await axios.get("http://ec2-18-191-90-196.us-east-2.compute.amazonaws.com:8080/getCalender/test3")
     },
     methods: {
+        click(obj){
+            alert(obj.article);
+        },
         getMonthName(month){
-            var monthName = ['1','2','3','4','5','6','7','8','9','10','11','12'];
+            var monthName = ['January','February','March','April','May','June','July','August','September','October','November','December'];
             return monthName[month - 1];
         },
         moveLastMonth() {
@@ -122,6 +127,7 @@ export default {
                           if(dayIdx == this.items.data[i].Day){
                             week[d].color = "#"+(this.items.data[i].ColorCode).toString(16)
                             week[d].num = this.items.data.length
+                            week[d].article = this.items.data[i].Article
                           }
                         }
                         dayIdx++;
@@ -194,7 +200,7 @@ span{
     text-align: center;
     border: medium solid #F2F2F2;
     width: 51px;
-    height: 113.74px;
+    height: 49px;
     padding: 0;
     margin: 0 auto;
     color:#919191;
