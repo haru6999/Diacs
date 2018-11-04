@@ -6,13 +6,9 @@
     <a href="calender" class="submited__btn--back">カレンダーへ戻る</a>
     <script>
       var changeColor = function(){
-        // search-result-num のクラス名を持つ要素を取得
         var resultNum = document.querySelector('.circle');
-
-        // 色変
         resultNum.style.backgroundColor = '{{color}}';
       }
-      // 実行
       changeColor();
     </script>
 

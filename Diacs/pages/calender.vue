@@ -13,14 +13,22 @@
           </thead>
           <tbody>
               <tr v-for="week in calendar">
-                  <td v-for="day in week">
+                  <td v-for="day in week" class="bg">
                     <div>
                       {{day.day}}
+                      <script>
+                        var bgColor = function(){
+                          var color = document.querySelector('.table td');
+                          color.style.backgroundColor = 'blue';
+                        }
+                        bgColor();
+                      </script>
                     </div>
                   </td>
               </tr>
           </tbody>
       </table>
+
       <a href="post"><i class="fas fa-plus"></i></a>
   </div>
 
@@ -116,8 +124,10 @@ export default {
                         dayIdx++;
                     } else {
                         week[d] = {day: dayIdx};
+
                         for(var i=0;i<this.items.data.length;i++){
-                          if({day: dayIdx}==this.items.data[i].Day){
+                          if(dayIdx == this.items.data[i].Day){
+                            week[d].color = "#"+(this.items.data[i].ColorCode).toString(16)
                           }
                         }
                         dayIdx++;
@@ -135,6 +145,10 @@ export default {
 <style>
 *{
   margin: 0 auto;
+}
+
+.bg{
+
 }
 
 
