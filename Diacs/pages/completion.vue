@@ -1,22 +1,21 @@
 <template>
   <div>
-    <a href="calender">calenderへ飛ぶ</a>
-    {{ username }}
-    <div class="color">
-      background-color:{{color}};
-      $color={{color}};
-    </div>
+    <h1>送信できたよ！</h1>
+    <h2>今回の日記カラーは</h2>
+    <div class="circle"></div>
+   <a href="calender">calenderへ飛ぶ</a>
     <script>
       var changeColor = function(){
         // search-result-num のクラス名を持つ要素を取得
-        var resultNum = document.querySelector('.color');
+        var resultNum = document.querySelector('.circle');
 
-        // 色変更
+        // 色変
         resultNum.style.backgroundColor = '{{color}}';
       }
       // 実行
       changeColor();
     </script>
+ 
   </div>
 </template>
 
@@ -72,6 +71,12 @@ export default {
 .color{
   width: 100%;
   height: 100vh;
+}
+
+.circle{
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
 }
 
 </style>
