@@ -10,7 +10,7 @@
 <script>
 import axios from 'axios'
 export default {
-  
+
   data: function () {
    return
  },
@@ -20,8 +20,8 @@ export default {
       params.append('article', this.message);
       params.append('username', 'taka');
       params.append('year', '2018');
-      params.append('month', '11');
-      params.append('day', '3');
+      params.append('month', '12');
+      params.append('day', '31');
 
       let { data } = await axios.post('http://ec2-18-191-90-196.us-east-2.compute.amazonaws.com:8080/getSentiment',params);
       console.log(data)

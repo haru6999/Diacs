@@ -14,25 +14,18 @@
           <tbody>
               <tr v-for="week in calendar">
                   <td v-for="day in week" class="bg" v-bind:style="{backgroundColor:day.color}">
-                    <div v-on:click="click(day)" class="day">
+                    <div v-on:click="click(day)">
                       {{day.day}}
+
                     </div>
                   </td>
               </tr>
           </tbody>
       </table>
-
       <a href="post"><i class="fas fa-plus"></i></a>
-      <div  >
-          <img class="colorBar" src="./grad.png">
-        </div>
 
-    <div >
-        <div class="message" id="word">
-            <p>{{message}} </p>
-        </div>
-    </div>
   </div>
+
 </template>
 
 <script>
@@ -64,7 +57,6 @@ export default {
           weeks: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
           calData: {year: 0, month: 0},
           items: [],
-          message: '日にちを押すとここにめっせーじがひょうじされるよ！',
         }
     },
     created: async function (){
@@ -76,11 +68,10 @@ export default {
     },
     methods: {
         click(obj){
-            //document.getElementById("word").textContent = obj.article
-            this.message = obj.article
+            alert(obj.article);
         },
         getMonthName(month){
-            var monthName = ['1','2','3','4','5','6','7','8','9','10','11','12'];
+            var monthName = ['January','February','March','April','May','June','July','August','September','October','November','December'];
             return monthName[month - 1];
         },
         moveLastMonth() {
@@ -120,10 +111,10 @@ export default {
                 // 空白行をなくすため
                 if (lastDate < dayIdx) {break;}
 
-                for (var d = 0; d < 7; d++) {
+                for (var d = 0; d < 17; d++) {
                     if (w == 0 && d < firstDay) {
                         week[d] = {day: ''};
-                    } else if (w == 6 && lastDate < dayIdx) {
+                    } else if (w == 16 && lastDate < dayIdx) {
                         week[d] = {day: ''};
                         dayIdx++;
                     } else if (lastDate < dayIdx) {
@@ -154,12 +145,6 @@ export default {
 <style>
 *{
   margin: 0 auto;
-}
-
-html,body {
-    margin: 0 auto;
-    width: 100%;
-    height: 100vh;
 }
 
 .bg{
@@ -215,7 +200,7 @@ span{
     text-align: center;
     border: medium solid #F2F2F2;
     width: 51px;
-    height: 51px;
+    height: 49px;
     padding: 0;
     margin: 0 auto;
     color:#919191;
@@ -249,10 +234,7 @@ span{
     opacity: 0.6;
     background-color: blue;
 }
-.day{
-    font-weight: bold;
-    color: #191919;
-}
+
 .fa-plus{
   position: absolute;
   top: 25px;
@@ -262,26 +244,5 @@ span{
 }
 /*色付け*/
 
-/*下に表示されるめっせーじ*/
-.message {
-    height: 53vh;
-    background-color: #eee;
-    padding-top: 1rem;
-}
-.colorBar {
-    width: 100%;
-    padding-top: 10px;
-}
-
-
-.message p {
-    background-color: #fff;
-    width: 90%;
-    height: 30vh;
-    margin: 0rem auto;
-    padding: 1rem;
-    border-radius: 1rem;
-    /*border: medium solid #ff00ff;*/
-}
 
 </style>
